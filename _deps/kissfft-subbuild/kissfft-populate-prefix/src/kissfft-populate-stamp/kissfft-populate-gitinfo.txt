@@ -1,3 +1,0 @@
-repository='https://github.com/mborgerding/kissfft.git'
-module=''
-tag='origin'

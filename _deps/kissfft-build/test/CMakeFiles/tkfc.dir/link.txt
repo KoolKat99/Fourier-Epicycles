@@ -1,1 +1,0 @@
-/usr/bin/cc CMakeFiles/tkfc.dir/twotonetest.c.o -o tkfc-float  -Wl,-rpath,"/home/ian/VSCODE/C++/Fourier Picture/build/_deps/kissfft-build" ../libkissfft-float.so.131.1.0 -lm 
