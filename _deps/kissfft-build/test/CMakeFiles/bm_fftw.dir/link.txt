@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/bm_fftw.dir/benchfftw.c.o CMakeFiles/bm_fftw.dir/pstats.c.o -o bm_fftw-float  -Wl,-rpath,"/home/ian/VSCODE/C++/Fourier Picture/build/_deps/kissfft-build" ../libkissfft-float.so.131.1.0 -lm /usr/lib/x86_64-linux-gnu/libfftw3.so 

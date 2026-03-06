@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/fastconvr.dir/kiss_fastfir.c.o -o fastconvr-float  -Wl,-rpath,"/home/ian/VSCODE/C++/Fourier Picture/build/_deps/kissfft-build:" ../libkissfft-float.so.131.1.0 -lm 

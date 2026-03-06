@@ -1,0 +1,3 @@
+repository='https://github.com/opencv/opencv.git'
+module=''
+tag='origin'
