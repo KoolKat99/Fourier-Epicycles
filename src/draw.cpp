@@ -116,14 +116,15 @@ the final point will trace out the shape
 input : Fourier coefficients (vector of form [phase, freq, amplitude]) sorted by freq
 return : void
 */
-void draw_epicycles(std::vector<std::complex<float>>& coefficients) {
+void draw_epicycles(std::vector<std::complex<float>>& coefficients, float angle_coeff = 0.005f) {
     
 
 
     float draw_scale = 400.0f; // pixels per unit
 
     std::deque<sf::Vector2f> trail; // store previous points
-    const int maxTrail = 2000;       // number of points in trail
+    const int max_trail = 1000;       // number of points in trail
+    const int minimum_dark = 15;
 
 
     //first render the window
@@ -144,7 +145,7 @@ void draw_epicycles(std::vector<std::complex<float>>& coefficients) {
                 window.close();
         }
 
-        angle += 0.005f;
+        angle += angle_coeff;
 
         sf::Vector2f center(600.f, 500.f);
 
@@ -202,7 +203,7 @@ void draw_epicycles(std::vector<std::complex<float>>& coefficients) {
 
         // Add to trail
         trail.push_back(pos);
-        if (trail.size() > maxTrail)
+        if (trail.size() > max_trail)
             trail.pop_front();
 
 
@@ -210,8 +211,8 @@ void draw_epicycles(std::vector<std::complex<float>>& coefficients) {
         int n = trail.size();
         for (int i = 0; i < n-1; ++i) {
             sf::Vertex line[] = {
-                sf::Vertex(trail[i], sf::Color(255, 0, 0, (255 * i)/n)),    // fading red
-                sf::Vertex(trail[i+1], sf::Color(255, 0, 0, (255 * (i+1))/n))
+                sf::Vertex(trail[i], sf::Color(255, 0, 0, std::max((255 * i)/n, minimum_dark))),    // fading red
+                sf::Vertex(trail[i+1], sf::Color(255, 0, 0, std::max((255 * (i+1))/n, minimum_dark)))
             };
             window.draw(line, 2, sf::Lines);
         }

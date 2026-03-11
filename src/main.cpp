@@ -20,8 +20,7 @@ std::vector<std::complex<float>> keepLargestM(const std::vector<std::complex<flo
 
 int main() {
 
-
-    std::string imagePath = "";
+    std::string imagePath = "../images/contour_line_0.png";
 
     // Read the image (in color by default)
     cv::Mat image = cv::imread(imagePath, cv::IMREAD_GRAYSCALE);
@@ -41,7 +40,7 @@ int main() {
     std::vector<std::complex<float>> path_transformed = dft(path);
 
     //then sort
-    int M = 1000; // keep only top 100 coefficients
+    int M = 100; // keep only top 100 coefficients
     std::vector<std::complex<float>> filteredFFT = keepLargestM(path_transformed, M);
 
     // Optional: print the first few
@@ -52,7 +51,8 @@ int main() {
 
 
     //then send to draw the epicycles
-    draw_epicycles(filteredFFT);
+    float angle_coeff = 0.01;
+    draw_epicycles(filteredFFT, angle_coeff);
 
 
 
